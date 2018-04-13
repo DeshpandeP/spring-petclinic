@@ -23,7 +23,7 @@ pipeline {
       agent any
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.poojadeshpande} -p ${env.pass123!@#}"
+          sh "docker login -u poojadeshpande -p env.pass123!@#"
           sh 'docker push poojadeshpande/spring-petclinic:latest'
         }
       }
