@@ -12,21 +12,6 @@ pipeline {
       steps {
         sh 'mvn clean install'
       }
-    }
-    stage('Docker Build') {
-      agent any
-      steps {
-        sh 'docker build -t poojadeshpande/spring-petclinic:latest .'
-      }
-    }
-    stage('Docker Push') {
-      agent any
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u poojadeshpande -p pass123!@#"
-          sh 'docker push poojadeshpande/spring-petclinic:latest'
-        }
-      }
-    }
+    } 
   }
 }
